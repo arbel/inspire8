@@ -1,6 +1,11 @@
 	console.log("click");
 /* TODO: slides need to return to original place after they are removed */
 $(document).ready(function () {
+	function updateTotal() {
+		var total = $("#bag .bag-list li").length
+		$(".total").html(total);
+	}
+	updateTotal();
 
 	  $('#bag').flexslider({
     	animation: "slide",
@@ -15,7 +20,7 @@ $(document).ready(function () {
     	mousewheel: true,
     	start: function(slider) {
     		$(".design-list li a").click(function() {
-			    			slider.flexAnimate(slider.count-5);
+			    slider.flexAnimate(slider.count-5);
 
     			$("#bag").addClass("open");
     			$(this).closest("li").css('z-index', 5000);
@@ -26,6 +31,8 @@ $(document).ready(function () {
     			}, 1000,  function() {
     				count =slider.count;
     				slider.addSlide($(this).closest("li"),count-1);
+    				 updateTotal();
+
     				$(this).animate({
     					opacity:1,
     					bottom:0,
@@ -35,6 +42,7 @@ $(document).ready(function () {
 	 			
 			 });
 			 $(".remove-button").click(function() {
+			 	updateTotal();
 				$(this).closest("li").animate({
 					opacity:0,
 					width:0
