@@ -7,6 +7,17 @@ $(document).ready(function () {
 	}
 	updateTotal();
 
+        $("#design-list-container").flexslider({
+            animation: "slide",
+            slideshow: false,
+            directionNav:false, 
+            animationLoop: false,
+
+           
+            manualControls : ".categories-list li"
+
+        });
+
 	  $('#bag').flexslider({
     	animation: "slide",
     	slideshow: false,
